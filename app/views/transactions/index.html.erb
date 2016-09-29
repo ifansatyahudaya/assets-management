@@ -1,0 +1,37 @@
+<div class="page-header">
+  <%= link_to new_transaction_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Transaction
+  <% end %>
+    <h1>
+    Listing Transaction
+    Transaction  
+    </h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>No#</th>
+        <th>Title</th>
+        <th>Date of Transaction</th>
+        <th>Price</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>  
+    <tbody>
+      <% @transactions.each_with_index do |transaction, index| %>  
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= transaction.title %></td>
+          <td><%= transaction.date_transaction.try(:strftime, "%-d %B %Y") %></td>
+          <td><%= transaction.price %></td>
+          <td><%= link_to "Show", transaction_path(transaction) %></td>
+          <td><%= link_to "Edit", edit_transaction_path(transaction) %></td>
+          <td><%= link_to "Delete", transaction, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

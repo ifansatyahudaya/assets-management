@@ -1,0 +1,31 @@
+<div class="page-header">
+  <%= link_to new_asset_path, class: 'btn btn-primary' do %>
+      <span class="glyphicon glyphicon-plus"></span>
+        New Asset
+    <% end %>
+  <h1>Listing Assets</h1>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>No#</th>
+        <th>Name</th>
+        <th>Purchase Date</th>
+        <th colspan="3">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @assets.each_with_index do |asset, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= asset.name %></td>
+          <td><%= asset.purchase_date.try(:strftime, "%-d %B %Y") %></td>
+          <td><%= link_to "Show", asset_path(asset) %></td>
+          <td><%= link_to "Edit", edit_asset_path(asset) %></td>
+          <td><%= link_to "Delete", asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr> 
+      <% end %> 
+    </tbody>     
+  </table>
+</div>
