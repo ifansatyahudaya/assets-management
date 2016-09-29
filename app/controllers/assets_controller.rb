@@ -1,7 +1,11 @@
 class AssetsController < ApplicationController
   before_action :set_asset, only: [:show, :edit, :update, :destroy]
+  
   def index
     @assets = Asset.all  
+  end
+
+  def show    
   end
 
   def new
@@ -11,7 +15,7 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.new(asset_params)  
     if @asset.save
-      redirect_to root_path, notice: "Asset was successfully created"  
+      redirect_to asset_path(@asset), notice: "Asset was successfully created"  
     else
       render "new"  
     end
@@ -34,7 +38,6 @@ class AssetsController < ApplicationController
   end
 
   private
-
     def set_asset
       @asset = Asset.find(params[:id])    
     end

@@ -19,8 +19,8 @@
 
   <div class="form-group">
     <%= f.label :date_transaction, "Date of Transaction" %>
-    <div class="input-group date js-datepicker">
-      <%= f.text_field :date_transaction, class: "form-control", placeholder: "Date of Transaction" %>
+    <div class='input-group date js-datepicker'>
+      <%= f.text_field :date_transaction, strftime: '%-d %B %Y', class: "form-control", placeholder: "Date of Transaction" %>
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>  
