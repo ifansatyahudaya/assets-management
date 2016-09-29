@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160929061425) do
+ActiveRecord::Schema.define(version: 20160929094307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,12 @@ ActiveRecord::Schema.define(version: 20160929061425) do
     t.text     "description"
     t.datetime "date_history"
     t.integer  "asset_id",       null: false
-    t.integer  "transaction_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "transaction_id"
   end
 
   add_index "histories", ["asset_id"], name: "index_histories_on_asset_id", using: :btree
-  add_index "histories", ["transaction_id"], name: "index_histories_on_transaction_id", using: :btree
 
   create_table "transactions", force: :cascade do |t|
     t.string   "title"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20160929061425) do
     t.decimal  "price"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "asset_id"
   end
 
 end
