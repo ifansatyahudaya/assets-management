@@ -1,4 +1,3 @@
 class History < ActiveRecord::Base
-  # belongs_to :asset
-  # belongs_to :transaction
+  belongs_to :asset
 end

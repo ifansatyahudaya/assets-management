@@ -17,6 +17,7 @@
         <th>Title</th>
         <th>Date of Transaction</th>
         <th>Price</th>
+        <th>Asset</th>
         <th colspan="3">Action</th>
       </tr>
     </thead>  
@@ -27,6 +28,7 @@
           <td><%= transaction.title %></td>
           <td><%= transaction.date_transaction.try(:strftime, "%-d %B %Y") %></td>
           <td><%= transaction.price %></td>
+          <td><%= transaction.asset.try(:name) %></td>
           <td><%= link_to "Show", transaction_path(transaction) %></td>
           <td><%= link_to "Edit", edit_transaction_path(transaction) %></td>
           <td><%= link_to "Delete", transaction, method: :delete, data: { confirm: "Are you sure?" } %></td>

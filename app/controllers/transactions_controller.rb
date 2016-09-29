@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_asset_collection, only: [:new, :edit]
   def index
     @transactions = Transaction.all  
   end
@@ -34,15 +34,20 @@ class TransactionsController < ApplicationController
 
   def destroy
     @transaction.destroy
-    redirect_to transcations_url, notice: "Transaction was successfully destroyed"  
+    redirect_to transactions_path, notice: "Transaction was successfully destroyed"  
   end
 
   private
+
+    def set_asset_collection
+      @asset_collection = Asset.all.collect { |a| [a.name, a.id] }  
+    end
+
     def set_transaction
       @transaction = Transaction.find(params[:id])  
     end
 
     def transaction_params
-      params.require(:transaction).permit(:title, :date_transaction, :price)
+      params.require(:transaction).permit(:title, :date_transaction, :price, :asset_id)
     end
 end
