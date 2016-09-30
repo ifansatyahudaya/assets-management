@@ -16,4 +16,17 @@
 
   <dt>Purchase Date:</dt>
   <dd><%= @asset.purchase_date %></dd>
+
 </dl>
+<dl class="dl-horizontal">  
+    <dt>Description:</dt>
+    <% @asset.histories.each do |a| %>
+      <dd><%= a.description %>  <%= a.date_history.try(:strftime, "%-d %B %Y") %></dd>
+    <% end %>
+</dl>
+
+
+<%= render "histories/form" %>  
+
+
+

@@ -53,7 +53,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :assets
+  resources :assets do
+    resources :histories
+  end
+  
   resources :transactions
+
   root 'assets#index'
 end

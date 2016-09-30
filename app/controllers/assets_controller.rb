@@ -1,11 +1,12 @@
 class AssetsController < ApplicationController
   before_action :set_asset, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @assets = Asset.all  
   end
 
   def show    
+    @history = @asset.histories.new
   end
 
   def new

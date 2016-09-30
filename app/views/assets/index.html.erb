@@ -21,7 +21,7 @@
           <td><%= index + 1 %></td>
           <td><%= asset.name %></td>
           <td><%= asset.purchase_date.try(:strftime, "%-d %B %Y") %></td>
-          <td><%= link_to "Show", asset_path(asset) %></td>
+          <td><%= link_to "Detail", asset_path(asset) %></td>
           <td><%= link_to "Edit", edit_asset_path(asset) %></td>
           <td><%= link_to "Delete", asset, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr> 

@@ -3,10 +3,7 @@
     <span class="glyphicon glyphicon-plus"></span>
     New Transaction
   <% end %>
-    <h1>
-    Listing Transaction
-    Transaction  
-    </h1>
+    <h1>Listing Transaction</h1>
 </div>
 
 <div class="table-responsive">
@@ -17,7 +14,7 @@
         <th>Title</th>
         <th>Date of Transaction</th>
         <th>Price</th>
-        <th>Asset</th>
+        <th>Attachment</th>
         <th colspan="3">Action</th>
       </tr>
     </thead>  
@@ -28,7 +25,11 @@
           <td><%= transaction.title %></td>
           <td><%= transaction.date_transaction.try(:strftime, "%-d %B %Y") %></td>
           <td><%= transaction.price %></td>
-          <td><%= transaction.asset.try(:name) %></td>
+          <% if transaction.attachment_content_type.try(:include?, "image") %>  
+            <td><%= image_tag transaction.attachment.url(:thumb) %></td>
+          <% else %>
+            <td><%= link_to transaction.attachment_file_name, transaction.attachment.url %></td>
+          <% end %>
           <td><%= link_to "Show", transaction_path(transaction) %></td>
           <td><%= link_to "Edit", edit_transaction_path(transaction) %></td>
           <td><%= link_to "Delete", transaction, method: :delete, data: { confirm: "Are you sure?" } %></td>

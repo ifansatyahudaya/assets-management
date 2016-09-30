@@ -20,6 +20,10 @@
   <dt>Price:</dt>
   <dd><%= @transaction.price %></dd>
 
-  <dt>Asset:</dt>
-  <dd><%= @transaction.asset.name %></dd>
+  <dt>Attachment:</dt>
+  <% if @transaction.attachment_content_type.try(:include?, "image") %>
+    <dd><%= image_tag @transaction.attachment.url %></dd>
+  <% else %>
+    <dd><%= link_to @transaction.attachment_file_name, @transaction.attachment.url %></dd>
+  <% end %>
 </dl>

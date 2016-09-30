@@ -1,6 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_asset_collection, only: [:new, :edit]
+  # before_action :set_asset_collection, only: [:new, :edit]
   def index
     @transactions = Transaction.all  
   end
@@ -19,6 +19,7 @@ class TransactionsController < ApplicationController
     else
       render "new"  
     end
+    ads
   end
 
   def edit
@@ -39,15 +40,15 @@ class TransactionsController < ApplicationController
 
   private
 
-    def set_asset_collection
-      @asset_collection = Asset.all.collect { |a| [a.name, a.id] }  
-    end
+    # def set_asset_collection
+    #   @asset_collection = Asset.all.collect { |a| [a.name, a.id] }  
+    # end
 
     def set_transaction
       @transaction = Transaction.find(params[:id])  
     end
 
     def transaction_params
-      params.require(:transaction).permit(:title, :date_transaction, :price, :asset_id)
+      params.require(:transaction).permit(:title, :date_transaction, :price, :asset_id, :attachment)
     end
 end
