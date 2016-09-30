@@ -10,4 +10,7 @@
 
 class History < ActiveRecord::Base
   belongs_to :asset
+
+  validates :description, presence: true
+  validates :date_history, presence: true
 end

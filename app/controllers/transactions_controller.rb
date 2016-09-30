@@ -38,11 +38,6 @@ class TransactionsController < ApplicationController
   end
 
   private
-
-    # def set_asset_collection
-    #   @asset_collection = Asset.all.collect { |a| [a.name, a.id] }  
-    # end
-
     def set_transaction
       @transaction = Transaction.find(params[:id])  
     end

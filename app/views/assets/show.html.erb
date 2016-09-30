@@ -15,7 +15,7 @@
   <dd><%= @asset.name %></dd>  
 
   <dt>Purchase Date:</dt>
-  <dd><%= @asset.purchase_date %></dd>
+  <dd><%= @asset.purchase_date.try(:strftime, "%-d %B %Y") %></dd>
 
 </dl>
 <dl class="dl-horizontal">  
