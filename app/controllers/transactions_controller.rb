@@ -19,7 +19,6 @@ class TransactionsController < ApplicationController
     else
       render "new"  
     end
-    ads
   end
 
   def edit
