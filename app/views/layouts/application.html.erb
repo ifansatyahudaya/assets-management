@@ -34,6 +34,19 @@
           <li><%= link_to "Assets", root_path %></li>
           <li><%= link_to "Transcation", transactions_path %></li>
         </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>                
+              </a>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "Profile #{current_user.email}" %></li>
+                <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to 'Log In', new_user_session_path %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   </nav>
